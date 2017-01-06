@@ -46,3 +46,8 @@ You wil notice the additional answer time field. The difference with the CommonL
 that the latter does not containt the two last fields (referrer and user agent)
 
 The full explanation of the log formats can be found at http://stackoverflow.com/a/9234855
+
+The `CombinedLogger` and `CommonLogger` functions accept an `io.Writer` parameter so, you can
+easily write to a file instead of stdout.
+
+
