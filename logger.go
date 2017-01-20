@@ -31,7 +31,7 @@ func CombinedLogger(out io.Writer) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			t1 := time.Now()
-			w2 := middleware.NewWrapResponseWriter(w)
+			w2 := middleware.NewWrapResponseWriter(w, 1)
 			next.ServeHTTP(w2, r)
 			t2 := time.Now()
 			writeCombinedLog(out, r, t1, w2.Status(), w2.BytesWritten(), t2.Sub(t1))
@@ -46,7 +46,7 @@ func CommonLogger(out io.Writer) func(next http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		fn := func(w http.ResponseWriter, r *http.Request) {
 			t1 := time.Now()
-			w2 := middleware.NewWrapResponseWriter(w)
+			w2 := middleware.NewWrapResponseWriter(w, 1)
 			next.ServeHTTP(w2, r)
 			t2 := time.Now()
 			writeCommonLog(out, r, t1, w2.Status(), w2.BytesWritten(), t2.Sub(t1))
