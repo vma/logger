@@ -15,16 +15,16 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/pressly/chi/middleware"
+	"github.com/go-chi/chi/middleware"
 )
 
 // CombinedLogger and CommonLogger are middlewares that log to stderr all
 // http requests and response in Apache CommonLog and CombinedLog formats.
 // They also log the answer delay in ms.
-
+//
 // These loggers are directly ported from gorilla handlers
 // https://github.com/gorilla/handlers
-
+//
 // CombinedLogger returns a middleware that logs HTTP requests to `out` Writer
 // in combined log format
 func CombinedLogger(out io.Writer) func(next http.Handler) http.Handler {
